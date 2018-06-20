@@ -1,6 +1,6 @@
 {
   "name": "eslint-import-resolver-locals-alias",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A simple Node behavior import resolution plugin for eslint-plugin-import, supporting module alias with local project modules and node_modules.",
   "main": "index.js",
   "scripts": {
