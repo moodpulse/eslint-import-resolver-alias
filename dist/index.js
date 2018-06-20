@@ -39,7 +39,6 @@ exports.resolve = (modulePath, sourceFile, config) => {
   const {map, extensions, debug} = config;
   const sourceDir = path.dirname(sourceFile);
   let resolvePath = modulePath;
-  debug && console.log(__dirname, map, extensions, sourceDir, resolvePath);
 
   // if modulePath starts with '.' (e.g. '.', '..', './a', '../a', '.ab.js')
   // it is a relative path because the path like '.ab.js' is not a valid node package name
@@ -58,10 +57,10 @@ exports.resolve = (modulePath, sourceFile, config) => {
     for (let i = 0; i < map.length; i++) {
       const re = new RegExp(`(^|\/)${map[i][0]}($|\/)`);
       const match = modulePath.match(re);
-      debug && console.log(modulePath, map[i][0], !!match);
+      debug && console.log('path match:', modulePath, map[i][0], !!match);
       if (match) {
         resolvePath = modulePath.replace(match[0], `${match[1]}${map[i][1]}${match[2]}`);
-        debug && console.log(modulePath, map[i][0], match[0], `${match[1]}${map[i][1]}${match[2]}`, resolvePath);
+        debug && console.log('resolvePath match repalce:', modulePath, map[i][0], match[0], `${match[1]}${map[i][1]}${match[2]}`, resolvePath);
         break;
       }
     }
@@ -92,7 +91,7 @@ function findModulePath(request, paths, extArray, debug = false) {
   // `Module._findPath` use `Module._extensions` to find a module
   const filename = Module._findPath(request, paths);
 
-  debug && console.log(request, paths, Module._extensions, filename);
+  debug && console.log('findModulePath data:', request, paths, Module._extensions, filename);
 
   if (extArray) {
     Module._extensions = originExtensions;
