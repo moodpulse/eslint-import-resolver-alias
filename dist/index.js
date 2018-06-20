@@ -128,5 +128,5 @@ function resolveLookupPaths(absoluteSourceDir) {
     } while(nextDir !== curDir);
   }
 
-  return paths.concat(Module.globalPaths, [__dirname]);
+  return paths.concat(Module.globalPaths, [__dirname, path.resolve(__dirname, '..'), path.resolve(__dirname, '..', '..')]);
 }
