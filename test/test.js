@@ -11,7 +11,8 @@ describe('resolver-alias/index.js', () => {
       ['module3/heihei', 'module2/smile'],
       ['^core$', '../dist/core'],
       ['core', 'module2/styles'],
-      ['module3', 'module2']
+      ['module3', 'module2'],
+      ['@root', 'folder_module']
     ],
     extensions: ['.js', '.ts', '.jsx', '.json']
   };
@@ -36,6 +37,7 @@ describe('resolver-alias/index.js', () => {
     'polyfill',
     'core/red',
     'core',
+    '@root/u',
   ];
   const noneExistModulePathArr = [
     'abc/ggg',

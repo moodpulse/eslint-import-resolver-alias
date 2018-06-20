@@ -27,7 +27,8 @@ exports.resolve = (modulePath, sourceFile, config) => {
   // compatible with the old array type configuration
   if (Array.isArray(config)) {
     config = {
-      map: config
+      map: config,
+      debug: false
     }
   } else if (typeof config !== 'object') {
     config = {};
@@ -35,10 +36,10 @@ exports.resolve = (modulePath, sourceFile, config) => {
 
   // in order to be compatible with Node.js v4,
   // give up destructure syntax
-  const map = config.map;
-  const extensions = config.extensions;
+  const {map, extensions, debug} = config;
   const sourceDir = path.dirname(sourceFile);
   let resolvePath = modulePath;
+  debug && console.log(map, extensions, sourceDir, resolvePath);
 
   // if modulePath starts with '.' (e.g. '.', '..', './a', '../a', '.ab.js')
   // it is a relative path because the path like '.ab.js' is not a valid node package name
@@ -54,18 +55,20 @@ exports.resolve = (modulePath, sourceFile, config) => {
   }
 
   if (Array.isArray(map)) {
-    for (let i = 0, len = map.length; i < len; i++) {
-      const re = new RegExp(`(^|/)${map[i][0]}($|/)`);
+    for (const m of map) {
+      const re = new RegExp(`(^|\/)${m[0]}($|\/)`);
       const match = modulePath.match(re);
+      debug && console.log(modulePath, m[0], !!match);
       if (match) {
-        resolvePath = modulePath.replace(match[0], `${match[1]}${map[i][1]}${match[2]}`);
+        resolvePath = modulePath.replace(match[0], `${match[1]}${m[1]}${match[2]}`);
+        debug && console.log(modulePath, m[0], match[0], `${match[1]}${m[1]}${match[2]}`, resolvePath);
         break;
       }
     }
   }
 
   const paths = resolveLookupPaths(sourceDir);
-  return findModulePath(resolvePath, paths, extensions);
+  return findModulePath(resolvePath, paths, extensions, debug);
 };
 
 function getExtensions(extArray) {
@@ -79,7 +82,7 @@ function getExtensions(extArray) {
   return null;
 }
 
-function findModulePath(request, paths, extArray) {
+function findModulePath(request, paths, extArray, debug = false) {
   if (extArray) {
     // little trick to make Node.js native `Module._findPath` method
     // to find the file with custom file extensions
@@ -88,6 +91,8 @@ function findModulePath(request, paths, extArray) {
 
   // `Module._findPath` use `Module._extensions` to find a module
   const filename = Module._findPath(request, paths);
+
+  debug && console.log(request, paths, Module._extensions, filename);
 
   if (extArray) {
     Module._extensions = originExtensions;
@@ -123,5 +128,5 @@ function resolveLookupPaths(absoluteSourceDir) {
     } while(nextDir !== curDir);
   }
 
-  return paths.concat(Module.globalPaths);
+  return paths.concat(Module.globalPaths, [absoluteSourceDir]);
 }
