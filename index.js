@@ -5,6 +5,7 @@
  *
  */
 const path = require('path');
+const resolve = require('resolve');
 const coreModules = Object.create(null);
 
 require('./core').forEach(function (m) {
@@ -131,5 +132,5 @@ function resolveLookupPaths(absoluteSourceDir) {
     } while(nextDir !== curDir);
   }
 
-  return paths.concat(Module.globalPaths, [__dirname, path.resolve(__dirname, '..'), path.resolve(__dirname, '..', '..')]);
+  return paths.concat([path.resolve(__dirname, '..', '..'), path.resolve(__dirname, '..'), __dirname], Module.globalPaths);
 }
