@@ -22,7 +22,7 @@ This is a simple Node.js module import resolution plugin for [`eslint-plugin-imp
 
 ## Installation
 
-Prerequisites: Node.js >=6.x and corresponding version of npm.
+Prerequisites: Node.js >=4.x and corresponding version of npm.
 
 ```shell
 npm install eslint-plugin-import eslint-import-resolver-locals-alias --save-dev

@@ -55,13 +55,13 @@ exports.resolve = (modulePath, sourceFile, config) => {
   }
 
   if (Array.isArray(map)) {
-    for (const m of map) {
-      const re = new RegExp(`(^|\/)${m[0]}($|\/)`);
+    for (let i = 0; i < map.length; i++) {
+      const re = new RegExp(`(^|\/)${map[i][0]}($|\/)`);
       const match = modulePath.match(re);
-      debug && console.log(modulePath, m[0], !!match);
+      debug && console.log(modulePath, map[i][0], !!match);
       if (match) {
-        resolvePath = modulePath.replace(match[0], `${match[1]}${m[1]}${match[2]}`);
-        debug && console.log(modulePath, m[0], match[0], `${match[1]}${m[1]}${match[2]}`, resolvePath);
+        resolvePath = modulePath.replace(match[0], `${match[1]}${map[i][1]}${match[2]}`);
+        debug && console.log(modulePath, map[i][0], match[0], `${match[1]}${map[i][1]}${match[2]}`, resolvePath);
         break;
       }
     }
