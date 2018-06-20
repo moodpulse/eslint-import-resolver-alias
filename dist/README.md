@@ -5,7 +5,6 @@
 [![Download][download]](https://www.npmjs.com/package/eslint-import-resolver-locals-alias)
 [![Dependencies][david]](https://david-dm.org/moodpulse/eslint-import-resolver-locals-alias)
 [![Coverage Status][cover]](https://coveralls.io/github/moodpulse/eslint-import-resolver-locals-alias?branch=master)
-[![Known Vulnerabilities][vulnerabilities]](https://snyk.io/test/npm/eslint-import-resolver-locals-alias)
 [![License][license]](https://opensource.org/licenses/MIT)
 
 [version]: http://img.shields.io/npm/v/eslint-import-resolver-locals-alias.svg?style=flat-square
@@ -13,7 +12,6 @@
 [download]: https://img.shields.io/npm/dm/eslint-import-resolver-locals-alias.svg?style=flat-square
 [david]: https://img.shields.io/david/moodpulse/eslint-import-resolver-locals-alias.svg?style=flat-square
 [cover]: http://img.shields.io/coveralls/moodpulse/eslint-import-resolver-locals-alias/master.svg?style=flat-square
-[vulnerabilities]: https://snyk.io/test/npm/eslint-import-resolver-locals-alias/badge.svg?style=flat-square
 [license]: https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square
 
 
