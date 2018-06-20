@@ -23,9 +23,9 @@
   "license": "MIT",
   "devDependencies": {
     "adjust-md-for-publish": "^1.0.0",
-    "builtin-modules": "^2.0.0",
-    "istanbul": "^1.0.0-alpha.2",
-    "mocha": "^3.2.0"
+    "builtin-modules": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0"
   },
   "peerDependencies": {
     "eslint-plugin-import": ">=1.4.0"
