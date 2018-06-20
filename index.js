@@ -59,10 +59,8 @@ exports.resolve = (modulePath, sourceFile, config) => {
     for (let i = 0; i < map.length; i++) {
       const re = new RegExp(`(^|\/)${map[i][0]}($|\/)`);
       const match = modulePath.match(re);
-      debug && console.log('path match:', modulePath, map[i][0], !!match);
       if (match) {
         resolvePath = modulePath.replace(match[0], `${match[1]}${map[i][1]}${match[2]}`);
-        debug && console.log('resolvePath match repalce:', modulePath, map[i][0], match[0], `${match[1]}${map[i][1]}${match[2]}`, resolvePath);
         break;
       }
     }
@@ -93,16 +91,20 @@ function findModulePath(request, paths, extArray, debug = false) {
   // `Module._findPath` use `Module._extensions` to find a module
   const filename = Module._findPath(request, paths);
 
-  debug && console.log('findModulePath data:', request, paths, Module._extensions, filename);
+  debug && console.log('findModulePath request:', request, paths);
 
   if (extArray) {
     Module._extensions = originExtensions;
   }
 
-  return {
+  const d = {
     found: !!filename,
     path: filename || null
   };
+
+  debug && console.log('findModulePath return:', d);
+
+  return d;
 }
 
 function resolveLookupPaths(absoluteSourceDir) {
