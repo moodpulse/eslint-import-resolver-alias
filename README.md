@@ -35,7 +35,7 @@ Pass this resolver and its parameters to `eslint-plugin-import` using your `esli
 // .eslintrc.js
 module.exports = {
   settings: {
-    'import/resolver': {
+    'import/resolver/locals': {
       alias: {
         map: [
           ['babel-polyfill', 'babel-polyfill/dist/polyfill.min.js'],
@@ -68,7 +68,7 @@ Note:
 // .eslintrc.js
 module.exports = {
   settings: {
-    'import/resolver': {
+    'import/resolver/locals': {
       alias: [
         ['babel-polyfill', 'babel-polyfill/dist/polyfill.min.js'],
         ['helper', './utils/helper'],
