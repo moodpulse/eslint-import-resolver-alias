@@ -1,5 +1,5 @@
 {
-  "name": "eslint-import-resolver-locals-alias",
+  "name": "eslint-import-resolver-localalias",
   "version": "2.0.2",
   "description": "A simple Node behavior import resolution plugin for eslint-plugin-import, supporting module alias with local project modules and node_modules.",
   "main": "index.js",
@@ -35,10 +35,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moodpulse/eslint-import-resolver-locals-alias.git"
+    "url": "git+https://github.com/moodpulse/eslint-import-resolver-localalias.git"
   },
   "bugs": {
-    "url": "https://github.com/moodpulse/eslint-import-resolver-locals-alias/issues"
+    "url": "https://github.com/moodpulse/eslint-import-resolver-localalias/issues"
   },
-  "homepage": "https://github.com/moodpulse/eslint-import-resolver-locals-alias#readme"
+  "homepage": "https://github.com/moodpulse/eslint-import-resolver-localalias#readme"
 }
