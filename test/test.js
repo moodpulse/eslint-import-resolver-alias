@@ -12,7 +12,7 @@ describe('resolver-alias/index.js', () => {
       ['^core$', '../dist/core'],
       ['core', 'module2/styles'],
       ['module3', 'module2'],
-      ['@root', 'folder_module']
+      ['@root', 'test/folder_module']
     ],
     extensions: ['.js', '.ts', '.jsx', '.json']
   };

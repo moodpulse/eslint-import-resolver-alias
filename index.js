@@ -39,7 +39,7 @@ exports.resolve = (modulePath, sourceFile, config) => {
   const {map, extensions, debug} = config;
   const sourceDir = path.dirname(sourceFile);
   let resolvePath = modulePath;
-  debug && console.log(map, extensions, sourceDir, resolvePath);
+  debug && console.log(__dirname, map, extensions, sourceDir, resolvePath);
 
   // if modulePath starts with '.' (e.g. '.', '..', './a', '../a', '.ab.js')
   // it is a relative path because the path like '.ab.js' is not a valid node package name
@@ -128,5 +128,5 @@ function resolveLookupPaths(absoluteSourceDir) {
     } while(nextDir !== curDir);
   }
 
-  return paths.concat(Module.globalPaths, [absoluteSourceDir]);
+  return paths.concat(Module.globalPaths, [__dirname]);
 }
