@@ -5,7 +5,6 @@
  *
  */
 const path = require('path');
-const resolve = require('resolve');
 const coreModules = Object.create(null);
 
 require('./core').forEach(function (m) {
