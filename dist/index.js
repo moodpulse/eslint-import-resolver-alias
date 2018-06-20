@@ -53,6 +53,8 @@ exports.resolve = (modulePath, sourceFile, config) => {
     return findModulePath(resolvePath, null, extensions);
   }
 
+  debug && console.log('resolve:', resolvePath, map, sourceDir);
+
   if (Array.isArray(map)) {
     for (let i = 0; i < map.length; i++) {
       const re = new RegExp(`(^|\/)${map[i][0]}($|\/)`);
